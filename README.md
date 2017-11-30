@@ -5,6 +5,7 @@ A Unity kit of assets and scripts for game jams
 clone this repo using `git clone --recursive https://github.com/alelievr/3D-JamStartupKit` to get the submodules.
 
 :warning: there is multiple branches with different 3D setups in this repo:
+
 branch | description
 --- | ---
 Terrain | Terrain tools and nature assets
@@ -14,6 +15,7 @@ Terrain | Terrain tools and nature assets
 + [DOTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676)
 + [Cinemachine](https://www.assetstore.unity3d.com/en/#!/content/79898)
 + [ProBuilder Basic](https://www.assetstore.unity3d.com/en/#!/content/11919)
++ [Unity particle pack](https://www.assetstore.unity3d.com/en/#!/content/73777)
 + [JamKit](https://github.com/alelievr/JamKit)
 
 ### Modified project settings
