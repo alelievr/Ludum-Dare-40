@@ -8,7 +8,7 @@ clone this repo using `git clone --recursive https://github.com/alelievr/3D-JamS
 
 branch | description
 --- | ---
-Terrain | Terrain tools and nature assets
+[Terrain](https://github.com/alelievr/3D-JamStartupKit/tree/Terrains) | Terrain tools and nature assets
 
 ### Assets included
 + [Post processing stack](https://www.assetstore.unity3d.com/en/#!/content/83912)
