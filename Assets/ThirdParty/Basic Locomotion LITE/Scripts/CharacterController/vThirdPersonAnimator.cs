@@ -24,6 +24,7 @@ namespace Invector.CharacterController
 
             // fre movement get the input 0 to 1
             animator.SetFloat("InputVertical", speed, 0.1f, Time.deltaTime);
+            // animator.SetFloat("InputHorizontal", speed, 0.1f, Time.deltaTime);
         }
 
         public void OnAnimatorMove()
