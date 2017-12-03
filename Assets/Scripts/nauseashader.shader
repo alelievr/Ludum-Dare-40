@@ -44,9 +44,9 @@
 				// n.y = n.y * (1 - tachement.x) + 70. / 256. * tachement.x;
 				// n.z = n.z * (1 - tachement.x) + 42. / 256. * tachement.x;
 
-				// tachement.x = tachement.x - 1;
-				// tachement.x *= -_Intensitytache;
-				tachement.x *= _Intensitytache;
+				tachement.x = tachement.x - 1;
+				tachement.x *= -_Intensitytache;
+				// tachement.x *= _Intensitytache;
 				// tachement.x = 0;
 				n.x = n.x * (1 - tachement.x) + 65. / 256. * tachement.x;
 				n.y = n.y * (1 - tachement.x) + 35. / 256. * tachement.x;

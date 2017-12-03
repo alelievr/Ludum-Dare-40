@@ -254,10 +254,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intensity: 8.63
+  Intensitytache: 0
   zoom: 0.02
   strength: 0.14
   speed: 3
-  distortionTexture: {fileID: 2800000, guid: 0ed505a04a4d566428acf448c3976223, type: 3}
+  distortionTexture: {fileID: 2800000, guid: 95b7e0214e223404891fe71e67772378, type: 3}
+  tacheTexture: {fileID: 2800000, guid: 95b7e0214e223404891fe71e67772378, type: 3}
 --- !u!114 &640247143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,46 +567,6 @@ Prefab:
     - target: {fileID: 4680134302230556, guid: 6418bd5d7f7eb4121b0b75919757d4f4, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 144881810281625312, guid: 6418bd5d7f7eb4121b0b75919757d4f4,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.18168354
-      objectReference: {fileID: 0}
-    - target: {fileID: 144217645320180180, guid: 6418bd5d7f7eb4121b0b75919757d4f4,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.0010079294
-      objectReference: {fileID: 0}
-    - target: {fileID: 144588636350052520, guid: 6418bd5d7f7eb4121b0b75919757d4f4,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.00087178417
-      objectReference: {fileID: 0}
-    - target: {fileID: 144940087004403482, guid: 6418bd5d7f7eb4121b0b75919757d4f4,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.3741611
-      objectReference: {fileID: 0}
-    - target: {fileID: 144225263999255470, guid: 6418bd5d7f7eb4121b0b75919757d4f4,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.18162441
-      objectReference: {fileID: 0}
-    - target: {fileID: 144232889706837872, guid: 6418bd5d7f7eb4121b0b75919757d4f4,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: -0.54578257
-      objectReference: {fileID: 0}
-    - target: {fileID: 144625088281935474, guid: 6418bd5d7f7eb4121b0b75919757d4f4,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.37244526
-      objectReference: {fileID: 0}
-    - target: {fileID: 144952607448926658, guid: 6418bd5d7f7eb4121b0b75919757d4f4,
-        type: 2}
-      propertyPath: m_ConnectedAnchor.x
-      value: 0.00075387955
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6418bd5d7f7eb4121b0b75919757d4f4, type: 2}
