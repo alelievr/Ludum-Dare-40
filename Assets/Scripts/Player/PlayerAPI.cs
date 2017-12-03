@@ -29,6 +29,12 @@ public class PlayerAPI : MonoBehaviour
 		controller.Jump();
 	}
 
+	public void AddMovement(Vector2 add)
+	{
+		controller.input.x += add.x;
+		controller.input.y += add.y;
+	}
+
 	public void SetRunSpeed(float speed) => controller.freeRunningSpeed = speed;
 	public void SetWalkSpeed(float speed) => controller.freeWalkSpeed = speed;
 	public void SetSprintSpeed(float speed) => controller.freeSprintSpeed = speed;
