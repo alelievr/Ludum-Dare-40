@@ -88,6 +88,10 @@ namespace Invector.CharacterController
         protected float groundDistance;
         public RaycastHit groundHit;
 
+        //My settings
+
+        public float     excitation = 50;
+
         #endregion
 
         #region Actions
