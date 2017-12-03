@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Speedy : MonoBehaviour {
 
-	public	PlayerController	Player;
+	public	ToxiController	Player;
 	PlayerAPI	api;
 	private	float				speedW;
 	private	float				speedR;

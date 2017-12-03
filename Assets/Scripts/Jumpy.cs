@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Jumpy : MonoBehaviour {
 
-	public	PlayerController	Player;
+	public	ToxiController	Player;
 	public	float				jumpForce;
 	PlayerAPI					api;
 

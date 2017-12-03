@@ -8,12 +8,12 @@ public class Rotaty : MonoBehaviour {
 	public	GameObject			Player;
 	PlayerAPI					api;
 
-	private	PlayerController	P;
+	private	ToxiController		P;
 	private	Rigidbody			rb;
 
 	// Use this for initialization
 	void Start () {
-		P = Player.GetComponent<PlayerController>();
+		P = Player.GetComponent<ToxiController>();
 		api = GetComponent< PlayerAPI >();
 		rb = api.rigidbody;
 		InvokeRepeating("CheckRotate", 2f, 1f);
