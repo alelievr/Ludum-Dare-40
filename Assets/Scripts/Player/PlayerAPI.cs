@@ -13,8 +13,9 @@ public class PlayerAPI : MonoBehaviour
 	public float		defaultPlayerRunSpeed = 3;
 	public float		defaultPlayerSprintSpeed = 4;
 
-	new public Rigidbody	rigidbody {get; private set; }
+	new public Rigidbody	rigidbody { get; private set; }
 	public bool				isGrounded { get { return controller.isGrounded; } }
+	public float			excitation { get { return controller.excitation; } }
 
 	void Awake ()
 	{
@@ -35,9 +36,7 @@ public class PlayerAPI : MonoBehaviour
 		controller.input.y += add.y;
 	}
 
-	public void SetRunSpeed(float speed) { controller.freeRunningSpeed = speed; }
-	public void SetWalkSpeed(float speed) { controller.freeWalkSpeed = speed; }
-	public void SetSprintSpeed(float speed) { controller.freeSprintSpeed = speed; }	
-	public float	GetDefaultWalkSpeed() {return defaultPlayerWalkSpeed;}
-	public float	GetDefaultRunSpeed() {return defaultPlayerRunSpeed;}
+	public void SetRunSpeed(float speed) { controller.freeSprintSpeed = speed; }
+	public void SetWalkSpeed(float speed) { controller.freeRunningSpeed = speed; }
+	public void AddExcitation(float excitation) { controller.excitation += excitation; }
 }

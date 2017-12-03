@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class render_with_shader : MonoBehaviour {
+public class render_with_shader : MonoBehaviour
+{
 	public float		intensity;
 	public float 		Intensitytache = 0;
 	public float		zoom = 1;
