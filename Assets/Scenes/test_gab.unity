@@ -248,7 +248,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 640247136}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef44bbebc3ede4b3db2508e9de0f9277, type: 3}
   m_Name: 
@@ -258,6 +258,18 @@ MonoBehaviour:
   strength: 0.14
   speed: 3
   distortionTexture: {fileID: 2800000, guid: 0ed505a04a4d566428acf448c3976223, type: 3}
+--- !u!114 &640247143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 640247136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee78199298a8f4cfb841e7355322b5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 745703675}
 --- !u!1 &656816725
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,6 +354,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &745703675 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95364942114044182, guid: 6418bd5d7f7eb4121b0b75919757d4f4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1205061867}
 --- !u!1 &1109409425
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +540,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4680134302230556, guid: 6418bd5d7f7eb4121b0b75919757d4f4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.86
       objectReference: {fileID: 0}
     - target: {fileID: 4680134302230556, guid: 6418bd5d7f7eb4121b0b75919757d4f4, type: 2}
       propertyPath: m_LocalPosition.z
