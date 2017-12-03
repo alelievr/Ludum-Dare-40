@@ -36,8 +36,7 @@ public class PlayerAPI : MonoBehaviour
 		controller.input.y += add.y;
 	}
 
-	public void SetRunSpeed(float speed) { controller.freeRunningSpeed = speed; }
-	public void SetWalkSpeed(float speed) { controller.freeWalkSpeed = speed; }
-	public void SetSprintSpeed(float speed) { controller.freeSprintSpeed = speed; }	
+	public void SetRunSpeed(float speed) { controller.freeSprintSpeed = speed; }
+	public void SetWalkSpeed(float speed) { controller.freeRunningSpeed = speed; }
 	public void AddExcitation(float excitation) { controller.excitation += excitation; }
 }
