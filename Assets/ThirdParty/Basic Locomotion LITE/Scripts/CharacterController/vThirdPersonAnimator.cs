@@ -12,7 +12,7 @@ namespace Invector.CharacterController
             animator.SetBool("IsStrafing", isStrafing);
             animator.SetBool("IsGrounded", isGrounded);
             animator.SetFloat("GroundDistance", groundDistance);
-            animator.SetFloat("excitement", excitation);
+            // animator.SetFloat("excitement", excitation);
 
             if (!isGrounded)
                 animator.SetFloat("VerticalVelocity", verticalVelocity);

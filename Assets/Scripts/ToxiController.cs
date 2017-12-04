@@ -7,21 +7,20 @@ using DG.Tweening;
 public class ToxiController : MonoBehaviour {
 
 	// Use this for initialization
-	public	float			toxicity = 50f;
-	public	float			fatigue = 50f;
-	public	Slider			toxiSlider;
-	public	Slider			fatigueSlider;
-	public	Text			sleeptxt;
-	public	bool			GameState;
+	public	float				toxicity = 50f;
+	public	float				fatigue = 50f;
+	public	Text				sleeptxt;
+	public	bool				GameState;
+	public render_with_shader	rws;
 	Vector3 				lastCheckpoint;
 	float					lastCheckpointToxicity = 0;
 	float					lastCheckpointFatigue = 0;
 	public GameObject		cafe;
-	
 
 	// private static System.Random rnd = new System.Random();
 	private	RectTransform	sleepRT;
 	private	Rigidbody		rb;
+	private Animator		anim;
 
 	List<GameObject> cafeSinceLastCheckpoint = new List<GameObject>();
 
@@ -29,6 +28,7 @@ public class ToxiController : MonoBehaviour {
 		GameState = true;
 		lastCheckpoint = transform.position;
 		sleepRT = sleeptxt.GetComponent<RectTransform>();
+		anim = GetComponent<Animator>();
 		sleepRT.localPosition = new Vector3( 0, 450, 0);
 		InvokeRepeating("ToxicityUpdate", 2f, 0.2f);
 		InvokeRepeating("fatigueUpdate", 2f, 0.2f);
@@ -37,8 +37,9 @@ public class ToxiController : MonoBehaviour {
 	void FixedUpdate()
 	{
 		if (!GameState) {
-			sleepRT.localPosition = Vector3.MoveTowards(sleepRT.localPosition, new Vector3(0, -450f, 0), 1f);
+			// sleepRT.localPosition = Vector3.MoveTowards(sleepRT.localPosition, new Vector3(0, -450f, 0), 1f);
 		}
+		anim.SetFloat("excitement", -(fatigue - 100));
 	}
 
 	void sleep() {
@@ -68,7 +69,14 @@ public class ToxiController : MonoBehaviour {
 			if (toxicity < 0) {
 				toxicity = 0;
 			}
-			toxiSlider.GetComponent<Slider>().value = toxicity;
+			float tmp = toxicity / 50 - 1;
+			tmp = (tmp < 0) ? 0 : tmp;
+			rws.intensity = tmp;
+			tmp = toxicity / 20 - 4;
+			tmp = (tmp > 0) ? 0 : tmp;
+			tmp = (tmp < 0.1f) ? tmp : Mathf.Pow(2, tmp);
+			rws.Intensitytache = tmp;
+			// toxiSlider.GetComponent<Slider>().value = toxicity;
 		}
     }
 	
@@ -79,7 +87,7 @@ public class ToxiController : MonoBehaviour {
 				// sleep();
 				GameState = false;
 			}
-			fatigueSlider.GetComponent<Slider>().value = fatigue;
+			// fatigueSlider.GetComponent<Slider>().value = fatigue;
 		}
     }
 

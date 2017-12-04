@@ -17,7 +17,7 @@ public class Speedy : MonoBehaviour {
 	}
 
 	void Update() {
-		api.SetWalkSpeed(speedW + (Player.toxicity / 5));
-		api.SetRunSpeed(speedR + (Player.toxicity / 5));
+		api.SetWalkSpeed(speedW * (Player.toxicity + 0.2f) / 25);
+		api.SetRunSpeed((Player.toxicity + 0.2f) * speedR / 25);
 	}
 }

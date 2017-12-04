@@ -29,7 +29,6 @@ public class render_with_shader : MonoBehaviour
  			Graphics.Blit (source, destination);
  			return;
  		}
-
 		material.SetTexture("_DisplacementTex", distortionTexture);
 		material.SetTexture("_TacheTex", tacheTexture);
  		material.SetFloat("_bwBlend", intensity);

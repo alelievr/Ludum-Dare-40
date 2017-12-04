@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 82395373312504796}
   - component: {fileID: 114704449313232134}
   - component: {fileID: 114818971668125784}
+  - component: {fileID: 45073488176390186}
+  - component: {fileID: 114996584485156400}
+  - component: {fileID: 114995346504466622}
   m_Layer: 0
   m_Name: 3rdPersonCamera
   m_TagString: MainCamera
@@ -29,7 +32,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155668}
   m_LocalRotation: {x: 0.30434322, y: -0.28090748, z: 0.09443624, w: 0.90528893}
-  m_LocalPosition: {x: -2.72, y: 1.15, z: -6.41}
+  m_LocalPosition: {x: 4.83, y: 3.37, z: -2.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,6 +129,14 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155668}
   m_IsPrefabParent: 1
+--- !u!45 &45073488176390186
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155668}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!82 &82395373312504796
 AudioSource:
   m_ObjectHideFlags: 1
@@ -217,7 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: e4641312def434b479cfdabb9aa307e2, type: 2}
+  profile: {fileID: 0}
 --- !u!114 &114818971668125784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,3 +247,33 @@ MonoBehaviour:
   speed: 0.3
   distortionTexture: {fileID: 2800000, guid: d6a42d710971e07418e30f9a047b65b6, type: 3}
   tacheTexture: {fileID: 2800000, guid: d3d3954ad53568b49b1fda6366f2b5ee, type: 3}
+--- !u!114 &114995346504466622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155668}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef44bbebc3ede4b3db2508e9de0f9277, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 8.63
+  Intensitytache: 0
+  zoom: 0.02
+  strength: 0.14
+  speed: 3
+  distortionTexture: {fileID: 2800000, guid: 0ed505a04a4d566428acf448c3976223, type: 3}
+  tacheTexture: {fileID: 0}
+--- !u!114 &114996584485156400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155668}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee78199298a8f4cfb841e7355322b5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
