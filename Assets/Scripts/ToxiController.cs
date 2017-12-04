@@ -16,7 +16,7 @@ public class ToxiController : MonoBehaviour {
 	Vector3 				lastCheckpoint;
 	float					lastCheckpointToxicity = 0;
 	float					lastCheckpointFatigue = 0;
-	public GameObject				cafe;
+	public GameObject		cafe;
 	
 
 	// private static System.Random rnd = new System.Random();
@@ -28,7 +28,7 @@ public class ToxiController : MonoBehaviour {
 	void Start () {
 		GameState = true;
 		lastCheckpoint = transform.position;
-		// sleepRT = sleeptxt.GetComponent<RectTransform>();
+		sleepRT = sleeptxt.GetComponent<RectTransform>();
 		sleepRT.localPosition = new Vector3( 0, 450, 0);
 		InvokeRepeating("ToxicityUpdate", 2f, 0.2f);
 		InvokeRepeating("fatigueUpdate", 2f, 0.2f);
@@ -43,7 +43,6 @@ public class ToxiController : MonoBehaviour {
 
 	void sleep() {
 		Debug.Log("sleep");
-		// sleepRT.DOMoveY(sleepRT.position.y - 1, 2f);
 		sleepRT.position = new Vector3( 0, 450, 0);
 		sleeptxt.enabled = true;
 		sleepRT.position = Vector3.MoveTowards(sleepRT.position, new Vector3(0, -450f, 0), 10);
