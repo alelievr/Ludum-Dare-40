@@ -16,11 +16,13 @@ public class ToxiController : MonoBehaviour {
 	// private static System.Random rnd = new System.Random();
 	private	RectTransform	sleepRT;
 	private	Rigidbody		rb;
+	private Animator		anim;
 
 	void Start () {
 		GameState = true;
-		sleepRT = sleeptxt.GetComponent<RectTransform>();
-		sleepRT.localPosition = new Vector3( 0, 450, 0);
+		anim = GetComponent<Animator>();
+		// sleepRT = sleeptxt.GetComponent<RectTransform>();
+		// sleepRT.localPosition = new Vector3( 0, 450, 0);
 		InvokeRepeating("ToxicityUpdate", 2f, 0.2f);
 		InvokeRepeating("fatigueUpdate", 2f, 0.2f);
 	}
@@ -28,20 +30,21 @@ public class ToxiController : MonoBehaviour {
 	void FixedUpdate()
 	{
 		if (!GameState) {
-			sleepRT.localPosition = Vector3.MoveTowards(sleepRT.localPosition, new Vector3(0, -450f, 0), 1f);
+			// sleepRT.localPosition = Vector3.MoveTowards(sleepRT.localPosition, new Vector3(0, -450f, 0), 1f);
 		}
+		anim.SetFloat("excitement", -(fatigue - 100));
 	}
 
 	void sleep() {
 		Debug.Log("sleep");
-		// sleepRT.DOMoveY(sleepRT.position.y - 1, 2f);
-		sleepRT.position = new Vector3(0, 450, 0);
-		sleeptxt.enabled = true;
-		sleepRT.position = Vector3.MoveTowards(sleepRT.position, new Vector3(0, -450f, 0), 10);
-		while (sleepRT.position.y > 0)
-		{
-			sleepRT.position = new Vector3(0, sleepRT.position.y - 0.5f, 0) * Time.deltaTime * 60f;
-		}
+		// // sleepRT.DOMoveY(sleepRT.position.y - 1, 2f);
+		// sleepRT.position = new Vector3(0, 450, 0);
+		// sleeptxt.enabled = true;
+		// sleepRT.position = Vector3.MoveTowards(sleepRT.position, new Vector3(0, -450f, 0), 10);
+		// while (sleepRT.position.y > 0)
+		// {
+		// 	sleepRT.position = new Vector3(0, sleepRT.position.y - 0.5f, 0) * Time.deltaTime * 60f;
+		// }
 		// sleeptxt.GetComponent<Text>();
 	}
 
@@ -67,7 +70,7 @@ public class ToxiController : MonoBehaviour {
 			tmp = toxicity / 20 - 4;
 			tmp = (tmp > 0) ? 0 : tmp;
 			tmp = (tmp < 0.1f) ? tmp : Mathf.Pow(2, tmp);
-			rws.intensity = tmp;
+			rws.Intensitytache = tmp;
 			// toxiSlider.GetComponent<Slider>().value = toxicity;
 		}
     }
