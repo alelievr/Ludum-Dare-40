@@ -47,7 +47,7 @@ public class PlayerAPI : MonoBehaviour
 
 	public void SetRunSpeed(float speed)
 	{
-		animator.speed = speed / defaultPlayerSprintSpeed;		
+		animator.speed = speed / defaultPlayerSprintSpeed;
 		controller.freeSprintSpeed = speed;
 	}
 	public void SetWalkSpeed(float speed)
