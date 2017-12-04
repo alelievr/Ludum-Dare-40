@@ -13,8 +13,8 @@ public class ToxiController : MonoBehaviour {
 	public	bool				GameState;
 	public render_with_shader	rws;
 	Vector3 				lastCheckpoint;
-	float					lastCheckpointToxicity = 0;
-	float					lastCheckpointFatigue = 0;
+	float					lastCheckpointToxicity = 50f;
+	float					lastCheckpointFatigue = 50f;
 	public GameObject		cafe;
 
 	// private static System.Random rnd = new System.Random();
@@ -26,6 +26,7 @@ public class ToxiController : MonoBehaviour {
 
 	void Start () {
 		GameState = true;
+		rb = GetComponent<Rigidbody>();
 		lastCheckpoint = transform.position;
 		sleepRT = sleeptxt.GetComponent<RectTransform>();
 		anim = GetComponent<Animator>();
@@ -124,11 +125,14 @@ public class ToxiController : MonoBehaviour {
 		if (other.tag == "Checkpoint" && lastCheckpoint.Equals(other.transform.position) == false)
 		{
 			cafeSinceLastCheckpoint.Clear();
+			lastCheckpointFatigue = fatigue;
+			lastCheckpointToxicity = toxicity;
 			lastCheckpoint = other.transform.position;
 		}
 		if (other.tag == "Death")
 		{
 			RespawnCafe();
+			rb.velocity = Vector3.zero;
 			fatigue = lastCheckpointFatigue;
 			toxicity = lastCheckpointToxicity;
 			transform.position = lastCheckpoint;
@@ -140,11 +144,14 @@ public class ToxiController : MonoBehaviour {
 		if (other.gameObject.tag == "Checkpoint" && lastCheckpoint.Equals(other.transform.position) == false)
 		{
 			cafeSinceLastCheckpoint.Clear();
+			lastCheckpointFatigue = fatigue;
+			lastCheckpointToxicity = toxicity;
 			lastCheckpoint = other.transform.position;
 		}
 		if (other.gameObject.tag == "Death")
 		{
 			RespawnCafe();
+			rb.velocity = Vector3.zero;			
 			transform.position = lastCheckpoint;
 			fatigue = lastCheckpointFatigue;
 			toxicity = lastCheckpointToxicity;
