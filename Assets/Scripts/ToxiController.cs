@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ToxiController : MonoBehaviour {
 
@@ -10,29 +11,69 @@ public class ToxiController : MonoBehaviour {
 	public	float			fatigue = 50f;
 	public	Slider			toxiSlider;
 	public	Slider			fatigueSlider;
+	public	Text			sleeptxt;
+	public	bool			GameState;
 
 	// private static System.Random rnd = new System.Random();
-	private	Rigidbody	rb;
+	private	RectTransform	sleepRT;
+	private	Rigidbody		rb;
 
 	void Start () {
+		GameState = true;
+		sleepRT = sleeptxt.GetComponent<RectTransform>();
+		sleepRT.localPosition = new Vector3( 0, 450, 0);
 		InvokeRepeating("ToxicityUpdate", 2f, 0.2f);
 		InvokeRepeating("fatigueUpdate", 2f, 0.2f);
 	}
 	
-	void ToxicityUpdate() {
-		toxicity -= 0.5f;
-		if (toxicity < 0) {
-			toxicity = 0;
+	void FixedUpdate()
+	{
+		if (!GameState) {
+			sleepRT.localPosition = Vector3.MoveTowards(sleepRT.localPosition, new Vector3(0, -450f, 0), 1f);
 		}
-		toxiSlider.GetComponent<Slider>().value = toxicity;
+	}
+
+	void sleep() {
+		Debug.Log("sleep");
+		// sleepRT.DOMoveY(sleepRT.position.y - 1, 2f);
+		sleepRT.position = new Vector3( 0, 450, 0);
+		sleeptxt.enabled = true;
+		sleepRT.position = Vector3.MoveTowards(sleepRT.position, new Vector3(0, -450f, 0), 10);
+		while (sleepRT.position.y > 0) {
+			sleepRT.position = new Vector3( 0, sleepRT.position.y - 0.5f, 0) * Time.deltaTime * 60f;
+		}
+		// sleeptxt.GetComponent<Text>();
+	}
+
+	// IEnumerator Dors() {
+	// 	sleepRT.position = new Vector3( 0, 450, 0);
+	// 	sleeptxt.enabled = true;
+	// 	while (sleepRT.position.y > 0) {
+	// 		sleepRT.position = new Vector3( 0, sleepRT.position.y - 0.5f, 0) * Time.deltaTime * 60f;
+	// 	}
+
+	// 	yield return new WaitForSeconds(2);
+	// }
+
+	void ToxicityUpdate() {
+		if (GameState) {
+			toxicity -= 0.5f;
+			if (toxicity < 0) {
+				toxicity = 0;
+			}
+			toxiSlider.GetComponent<Slider>().value = toxicity;
+		}
     }
 	
 	void fatigueUpdate() {
-		fatigue += 0.5f;
-		if (fatigue < 0) {
-			fatigue = 0;
+		if (GameState) {
+			fatigue += 0.5f;
+			if (fatigue >= 100) {
+				// sleep();
+				GameState = false;
+			}
+			fatigueSlider.GetComponent<Slider>().value = fatigue;
 		}
-		fatigueSlider.GetComponent<Slider>().value = fatigue;
     }
 
 	void addFatigue(float i) {
