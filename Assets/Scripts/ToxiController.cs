@@ -12,17 +12,25 @@ public class ToxiController : MonoBehaviour {
 	public	Text				sleeptxt;
 	public	bool				GameState;
 	public render_with_shader	rws;
+	Vector3 				lastCheckpoint;
+	float					lastCheckpointToxicity = 0;
+	float					lastCheckpointFatigue = 0;
+	public GameObject				cafe;
 
 	// private static System.Random rnd = new System.Random();
 	private	RectTransform	sleepRT;
 	private	Rigidbody		rb;
 	private Animator		anim;
 
+	List<GameObject> cafeSinceLastCheckpoint = new List<GameObject>();
+
 	void Start () {
 		GameState = true;
 		anim = GetComponent<Animator>();
 		// sleepRT = sleeptxt.GetComponent<RectTransform>();
 		// sleepRT.localPosition = new Vector3( 0, 450, 0);
+		lastCheckpoint = transform.position;
+		sleepRT.localPosition = new Vector3( 0, 450, 0);
 		InvokeRepeating("ToxicityUpdate", 2f, 0.2f);
 		InvokeRepeating("fatigueUpdate", 2f, 0.2f);
 	}
@@ -100,15 +108,52 @@ public class ToxiController : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision other)
+	void RespawnCafe()
 	{
-		Debug.Log(other.gameObject.tag);
-		if (other.gameObject.tag == "cafe") {
+		foreach(GameObject obj in cafeSinceLastCheckpoint)
+			obj.SetActive(true);
+		cafeSinceLastCheckpoint.Clear();
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		Debug.Log(other.tag);
+		if (other.tag == "cafe") {
 			addToxicity(10f);
 			addFatigue(-10f);
-			GameObject.Destroy(other.gameObject);
+			cafeSinceLastCheckpoint.Add(other.gameObject);
+			other.gameObject.SetActive(false);
+		}
+		if (other.tag == "Checkpoint" && lastCheckpoint.Equals(other.transform.position) == false)
+		{
+			cafeSinceLastCheckpoint.Clear();
+			lastCheckpoint = other.transform.position;
+		}
+		if (other.tag == "Death")
+		{
+			RespawnCafe();
+			fatigue = lastCheckpointFatigue;
+			toxicity = lastCheckpointToxicity;
+			transform.position = lastCheckpoint;
 		}
 	}
+
+	void OnCollisionEnter(Collision other)
+	{
+		if (other.gameObject.tag == "Checkpoint" && lastCheckpoint.Equals(other.transform.position) == false)
+		{
+			cafeSinceLastCheckpoint.Clear();
+			lastCheckpoint = other.transform.position;
+		}
+		if (other.gameObject.tag == "Death")
+		{
+			RespawnCafe();
+			transform.position = lastCheckpoint;
+			fatigue = lastCheckpointFatigue;
+			toxicity = lastCheckpointToxicity;
+		}
+	}
+
 
 	/*static void randomize (List<string> list) {
 		int n = list.Count;
