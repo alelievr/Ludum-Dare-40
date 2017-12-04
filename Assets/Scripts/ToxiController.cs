@@ -7,12 +7,11 @@ using DG.Tweening;
 public class ToxiController : MonoBehaviour {
 
 	// Use this for initialization
-	public	float			toxicity = 50f;
-	public	float			fatigue = 50f;
-	public	Slider			toxiSlider;
-	public	Slider			fatigueSlider;
-	public	Text			sleeptxt;
-	public	bool			GameState;
+	public	float				toxicity = 50f;
+	public	float				fatigue = 50f;
+	public	Text				sleeptxt;
+	public	bool				GameState;
+	public render_with_shader	rws;
 
 	// private static System.Random rnd = new System.Random();
 	private	RectTransform	sleepRT;
@@ -36,11 +35,12 @@ public class ToxiController : MonoBehaviour {
 	void sleep() {
 		Debug.Log("sleep");
 		// sleepRT.DOMoveY(sleepRT.position.y - 1, 2f);
-		sleepRT.position = new Vector3( 0, 450, 0);
+		sleepRT.position = new Vector3(0, 450, 0);
 		sleeptxt.enabled = true;
 		sleepRT.position = Vector3.MoveTowards(sleepRT.position, new Vector3(0, -450f, 0), 10);
-		while (sleepRT.position.y > 0) {
-			sleepRT.position = new Vector3( 0, sleepRT.position.y - 0.5f, 0) * Time.deltaTime * 60f;
+		while (sleepRT.position.y > 0)
+		{
+			sleepRT.position = new Vector3(0, sleepRT.position.y - 0.5f, 0) * Time.deltaTime * 60f;
 		}
 		// sleeptxt.GetComponent<Text>();
 	}
@@ -61,7 +61,14 @@ public class ToxiController : MonoBehaviour {
 			if (toxicity < 0) {
 				toxicity = 0;
 			}
-			toxiSlider.GetComponent<Slider>().value = toxicity;
+			float tmp = toxicity / 50 - 1;
+			tmp = (tmp < 0) ? 0 : tmp;
+			rws.intensity = tmp;
+			tmp = toxicity / 20 - 4;
+			tmp = (tmp > 0) ? 0 : tmp;
+			tmp = (tmp < 0.1f) ? tmp : Mathf.Pow(2, tmp);
+			rws.intensity = tmp;
+			// toxiSlider.GetComponent<Slider>().value = toxicity;
 		}
     }
 	
@@ -72,7 +79,7 @@ public class ToxiController : MonoBehaviour {
 				// sleep();
 				GameState = false;
 			}
-			fatigueSlider.GetComponent<Slider>().value = fatigue;
+			// fatigueSlider.GetComponent<Slider>().value = fatigue;
 		}
     }
 

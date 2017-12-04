@@ -322,22 +322,55 @@ namespace Invector.CharacterController
             {
                 if (isStrafing)
                 {
-                    _rigidbody.velocity = new Vector3(velX.x, velY.y, _rigidbody.velocity.z);
+                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, velY.y, _rigidbody.velocity.z);
                     var vel = transform.forward * (jumpForward * speed) + transform.right * (jumpForward * direction);
                     _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
                 }
                 else
                 {
                     var vel = transform.forward * (jumpForward * speed);
-                    _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
+                    _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y, _rigidbody.velocity.z);
                 }
             }
             else
             {
                 var vel = transform.forward * (jumpForward);
-                _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, _rigidbody.velocity.y, _rigidbody.velocity.z);
             }
         }
+
+
+        // original
+
+        // public void AirControl()
+        // {
+        //     if (isGrounded) return;
+        //     if (!jumpFwdCondition) return;
+
+        //     var velY = transform.forward * jumpForward * speed;
+        //     velY.y = _rigidbody.velocity.y;
+        //     var velX = transform.right * jumpForward * direction;
+        //     velX.x = _rigidbody.velocity.x;            
+
+        //     if (jumpAirControl)
+        //     {
+        //         if (isStrafing)
+        //         {
+        //             _rigidbody.velocity = new Vector3(velX.x, velY.y, _rigidbody.velocity.z);
+        //             var vel = transform.forward * (jumpForward * speed) + transform.right * (jumpForward * direction);
+        //             _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
+        //         }
+        //         else
+        //         {
+        //             var vel = transform.forward * (jumpForward * speed);
+        //             _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
+        //         }
+        //     }
+        //     else
+        //     {
+        //         var vel = transform.forward * (jumpForward);
+        //         _rigidbody.velocity = new Vector3(vel.x, _rigidbody.velocity.y, vel.z);
+        //     }
 
         protected bool jumpFwdCondition
         {
