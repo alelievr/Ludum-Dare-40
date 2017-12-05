@@ -18,6 +18,7 @@ public class ToxiController : MonoBehaviour {
 	float					lastCheckpointToxicity = 50f;
 	float					lastCheckpointFatigue = 50f;
 	public GameObject		cafe;
+	public	bool			rienacarrer = false;
 
 	public AudioMixer		mixer;
 
@@ -39,8 +40,11 @@ public class ToxiController : MonoBehaviour {
 		sleepRT = sleeptxt.GetComponent<RectTransform>();
 		anim = GetComponent<Animator>();
 		sleepRT.localPosition = new Vector3( 0, 450, 0);
-		InvokeRepeating("ToxicityUpdate", 2f, 0.2f);
-		InvokeRepeating("fatigueUpdate", 2f, 0.2f);
+		if (rienacarrer == false)
+		{
+			InvokeRepeating("ToxicityUpdate", 2f, 0.2f);
+			InvokeRepeating("fatigueUpdate", 2f, 0.2f);
+		}
 	}
 
 	void Update()
@@ -167,6 +171,11 @@ public class ToxiController : MonoBehaviour {
 			transform.position = lastCheckpoint;
 			fatigue = lastCheckpointFatigue;
 			toxicity = lastCheckpointToxicity;
+			if (rienacarrer == true)
+			{
+				fatigue = 0;
+				toxicity = 100;
+			}
 		}
 	}
 
