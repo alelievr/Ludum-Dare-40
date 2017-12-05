@@ -29,7 +29,7 @@
 			float _Intensitytache;
 			
 			float4 frag(v2f_img i) : COLOR {
-				float4 n = tex2D(_DisplacementTex, (i.uv + _Time.x * _Speed) * _Zoom);
+				float4 n = tex2D(_DisplacementTex, (i.uv + _Time.x * _Speed) * _Zoom) * _bwBlend;
 				float2 d = n.yz * 2 - 1;
 				float2 uv = i.uv;
 				uv += float2(0, d.y) * _Strength;

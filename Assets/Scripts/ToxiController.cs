@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class ToxiController : MonoBehaviour {
 
@@ -17,6 +19,11 @@ public class ToxiController : MonoBehaviour {
 	float					lastCheckpointFatigue = 50f;
 	public GameObject		cafe;
 
+	public AudioMixer		mixer;
+
+	public Slider			toxiSlider;
+	public Slider			fatigueSlider;
+
 	// private static System.Random rnd = new System.Random();
 	private	RectTransform	sleepRT;
 	private	Rigidbody		rb;
@@ -25,6 +32,7 @@ public class ToxiController : MonoBehaviour {
 	List<GameObject> cafeSinceLastCheckpoint = new List<GameObject>();
 
 	void Start () {
+		sleeptxt.enabled = false;
 		GameState = true;
 		rb = GetComponent<Rigidbody>();
 		lastCheckpoint = transform.position;
@@ -34,39 +42,35 @@ public class ToxiController : MonoBehaviour {
 		InvokeRepeating("ToxicityUpdate", 2f, 0.2f);
 		InvokeRepeating("fatigueUpdate", 2f, 0.2f);
 	}
+
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.R))
+			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		mixer.SetFloat("coffee", toxicity / 1.5f - 60);
+	}
 	
 	void FixedUpdate()
 	{
 		if (!GameState) {
-			// sleepRT.localPosition = Vector3.MoveTowards(sleepRT.localPosition, new Vector3(0, -450f, 0), 1f);
+			sleeptxt.enabled = true;
+			sleepRT.localPosition = Vector3.MoveTowards(sleepRT.localPosition, new Vector3(0, -450f, 0), 1f);
 		}
 		anim.SetFloat("excitement", -(fatigue - 100));
 	}
 
 	void sleep() {
-		Debug.Log("sleep");
-		sleepRT.position = new Vector3( 0, 450, 0);
+		sleepRT.position = new Vector3(0, 450, 0);
 		sleeptxt.enabled = true;
 		sleepRT.position = Vector3.MoveTowards(sleepRT.position, new Vector3(0, -450f, 0), 10);
 		while (sleepRT.position.y > 0) {
 			sleepRT.position = new Vector3( 0, sleepRT.position.y - 0.5f, 0) * Time.deltaTime * 60f;
 		}
-		// sleeptxt.GetComponent<Text>();
 	}
-
-	// IEnumerator Dors() {
-	// 	sleepRT.position = new Vector3( 0, 450, 0);
-	// 	sleeptxt.enabled = true;
-	// 	while (sleepRT.position.y > 0) {
-	// 		sleepRT.position = new Vector3( 0, sleepRT.position.y - 0.5f, 0) * Time.deltaTime * 60f;
-	// 	}
-
-	// 	yield return new WaitForSeconds(2);
-	// }
 
 	void ToxicityUpdate() {
 		if (GameState) {
-			toxicity -= 0.5f;
+			toxicity -= 0.20f;
 			if (toxicity < 0) {
 				toxicity = 0;
 			}
@@ -74,21 +78,29 @@ public class ToxiController : MonoBehaviour {
 			tmp = (tmp < 0) ? 0 : tmp;
 			rws.intensity = tmp;
 			tmp = toxicity / 20 - 4;
-			tmp = (tmp > 0) ? 0 : tmp;
+			tmp = (tmp < 0) ? 0 : tmp;
 			tmp = (tmp < 0.1f) ? tmp : Mathf.Pow(2, tmp);
 			rws.Intensitytache = tmp;
-			// toxiSlider.GetComponent<Slider>().value = toxicity;
+			
+			toxiSlider.value = toxicity;
 		}
     }
+
+	IEnumerator ResetLevel()
+	{
+		yield return new WaitForSeconds(4);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+	}
 	
 	void fatigueUpdate() {
 		if (GameState) {
-			fatigue += 0.5f;
-			if (fatigue >= 100) {
-				// sleep();
+			fatigue += 0.15f;
+			if (fatigue >= 100 && GameState) {
 				GameState = false;
+				GetComponent< RagdollController >().activeRagdoll = true;
+				StartCoroutine(ResetLevel());
 			}
-			// fatigueSlider.GetComponent<Slider>().value = fatigue;
+			fatigueSlider.value = fatigue;
 		}
     }
 
@@ -157,7 +169,6 @@ public class ToxiController : MonoBehaviour {
 			toxicity = lastCheckpointToxicity;
 		}
 	}
-
 
 	/*static void randomize (List<string> list) {
 		int n = list.Count;
