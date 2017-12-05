@@ -12,5 +12,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Level.unity
     guid: d5ac0dcc34fb252429fcb35a807684ec
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: a3e5b679744704cf3a5f5f1c1c650249
+    path: Assets/Scenes/nawak.unity
+    guid: 9784bec3a61034b3a8ccce3b970a3d8c

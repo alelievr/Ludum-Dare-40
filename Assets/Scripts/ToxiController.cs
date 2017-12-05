@@ -140,6 +140,11 @@ public class ToxiController : MonoBehaviour {
 			fatigue = lastCheckpointFatigue;
 			toxicity = lastCheckpointToxicity;
 			transform.position = lastCheckpoint;
+			if (rienacarrer == true)
+			{
+				fatigue = 0;
+				toxicity = 100;
+			}
 		}
 	}
 
