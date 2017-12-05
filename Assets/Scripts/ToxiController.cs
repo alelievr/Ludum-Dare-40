@@ -92,7 +92,7 @@ public class ToxiController : MonoBehaviour {
 
 	IEnumerator ResetLevel()
 	{
-		yield return new WaitForSeconds(4);
+		yield return new WaitForSeconds(8);
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 	
