@@ -32,7 +32,6 @@ namespace Invector.CharacterController
         {
             // we implement this function to override the default root motion.
             // this allows us to modify the positional speed before it's applied.
-            if (isGrounded || rienacarrer)
             {
                 transform.rotation = animator.rootRotation;
 
