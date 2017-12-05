@@ -33,6 +33,7 @@ namespace Invector.CharacterController
 
         [Header("--- Locomotion Setup ---")]
 
+        public bool rienacarrer = false;
         public LocomotionType locomotionType = LocomotionType.FreeWithStrafe;
         [Tooltip("lock the player movement")]
         public bool lockMovement;

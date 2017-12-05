@@ -9297,7 +9297,7 @@ BlendTree:
   m_Name: running
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 505e8eeb50aa44bf6bec181be91da4b9, type: 3}
+    m_Motion: {fileID: 7400000, guid: a575b61fa1dd9452291e59fc2904629f, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -9349,7 +9349,7 @@ BlendTree:
   m_Name: walking
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 984ff786b0a4f4660a172f603c910dc0, type: 3}
+    m_Motion: {fileID: 7400000, guid: a575b61fa1dd9452291e59fc2904629f, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
