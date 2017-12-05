@@ -19,6 +19,7 @@ namespace Invector.CharacterController
         [Header("Camera Settings")]
         public string rotateCameraXInput ="Mouse X";
         public string rotateCameraYInput = "Mouse Y";
+        public float rotateSpeed = 0.4f;
 
         protected vThirdPersonCamera tpCamera;                // acess camera info        
         [HideInInspector]
@@ -135,8 +136,8 @@ namespace Invector.CharacterController
         {
             if (tpCamera == null)
                 return;
-            var Y = Input.GetAxis(rotateCameraYInput);
-            var X = Input.GetAxis(rotateCameraXInput);
+            var Y = Input.GetAxis(rotateCameraYInput) * rotateSpeed;
+            var X = Input.GetAxis(rotateCameraXInput) * rotateSpeed;
 
             tpCamera.RotateCamera(X, Y);
 

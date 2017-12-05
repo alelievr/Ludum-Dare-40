@@ -8,9 +8,6 @@ public class PlayerAPI : MonoBehaviour
 	vThirdPersonController	controller;
 	vThirdPersonInput		input;
 
-	public Animation		runAnimation;
-	public Animation		walkAnimation;
-
 	public readonly float		defaultPlayerJumpPower = 4;
 	public readonly float		defaultPlayerWalkSpeed = 2.5f;
 	public readonly float		defaultPlayerRunSpeed = 3;

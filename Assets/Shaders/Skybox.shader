@@ -356,7 +356,7 @@ SubShader {
         #endif
 
 
-            return half4(col /*- sin2hue(_SinTime.x).rgb / 1*/,1.0);
+            return half4(col - sin2hue(sin(_Time.x)).rgb / 1,1.0);
 
         }
         ENDCG

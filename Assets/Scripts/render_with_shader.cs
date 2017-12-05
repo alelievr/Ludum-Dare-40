@@ -24,11 +24,6 @@ public class render_with_shader : MonoBehaviour
 	// Postprocess the image
 	void OnRenderImage (RenderTexture source, RenderTexture destination)
 	{
-		if (intensity == 0)
-		{
- 			Graphics.Blit (source, destination);
- 			return;
- 		}
 		material.SetTexture("_DisplacementTex", distortionTexture);
 		material.SetTexture("_TacheTex", tacheTexture);
  		material.SetFloat("_bwBlend", intensity);
