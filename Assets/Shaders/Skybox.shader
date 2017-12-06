@@ -173,6 +173,8 @@ SubShader {
         v2f vert (appdata_t v)
         {
             v2f OUT;
+            
+            UNITY_INITIALIZE_OUTPUT(v2f, OUT);
             UNITY_SETUP_INSTANCE_ID(v);
             UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(OUT);
             OUT.pos = UnityObjectToClipPos(v.vertex);

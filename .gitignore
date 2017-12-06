@@ -34,4 +34,6 @@ sysinfo.txt
 *.unitypackage
 *.exe
 *.app
+*.zip
+*.dll
 *_Data/
